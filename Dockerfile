@@ -5,12 +5,17 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:20-alpine
+FROM node:20-alpine AS runner
 WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=3000
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nodeuser
 COPY package*.json ./
 RUN npm ci --omit=dev
-COPY --from=builder /app/build ./build
+COPY --from=builder /app ./
+USER nodeuser
 EXPOSE 3000
-ENV PORT=3000
-ENV HOST=0.0.0.0
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD node -e "const http = require('http'); http.get('http://localhost:3000/health', (res) => { if (res.statusCode === 200) process.exit(0); else process.exit(1); }).on('error', () => process.exit(1));"
 CMD ["node", "build"]
