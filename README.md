@@ -6,7 +6,7 @@ Production-ready SvelteKit template optimized for AI-assisted development and De
 
 Deploy this production-ready template directly to Deployxa Cloud.
 
-[![Deploy with Deployxa](branding/deploy-button.svg)](https://deployxa.com/dashboard/new?repo=https%3A%2F%2Fgithub.com%2Fdeployxa-templates%2Fdeployxa-sveltekit&template=sveltekit&framework=svelte&branch=main&name=deployxa-sveltekit&runtime=Node.js+20&package_manager=npm&build_command=npm+run+build&start_command=node+build&dockerfile=Dockerfile&version=1.0.0&build_time=50s&image_size=220MB&env_vars=NODE_ENV%2CPORT)
+[![Deploy with Deployxa](branding/deploy-button.svg)](https://deployxa.com/dashboard/new?repo=https://github.com/deployxa-templates/deployxa-sveltekit)
 
 ### Or deploy using the CLI
 
